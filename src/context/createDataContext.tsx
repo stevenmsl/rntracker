@@ -1,4 +1,4 @@
-import React, {useReducer, createContext} from 'react';
+import React, { useReducer, createContext } from "react";
 
 /**
   @typeParam TState the type of the state you are managing
@@ -10,15 +10,15 @@ const createDataContext = <TState, TAction, TBoundActions>(
   /* hard to type this due to its dynamic nature
    */
   actionsFuncs: any,
-  initialState: TState,
+  initialState: TState
 ) => {
   /*#TA-03 state and the methods that maintain the state
    */
-  type ContextType = {state: TState} & TBoundActions;
+  type ContextType = { state: TState } & TBoundActions;
   const Context = createContext<ContextType | null>(null);
 
   /*#TA-04 */
-  const Provider: React.FC = ({children}) => {
+  const Provider: React.FC = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     /* we need to dynamically add properties to an object
        - annote it as type "any" here unless there is a better 
@@ -30,13 +30,19 @@ const createDataContext = <TState, TAction, TBoundActions>(
     }
 
     return (
-      <Context.Provider value={{state, ...boundActions}}>
+      <Context.Provider value={{ state, ...boundActions }}>
         {children}
       </Context.Provider>
     );
   };
 
-  return {Context, Provider};
+  /* freeze the array so the type of each
+     element is narrowed instead of being
+     as a union type which consists of a
+     union of all different types from 
+     all elements 
+  */
+  return [Provider, Context] as const;
 };
 
 export default createDataContext;
