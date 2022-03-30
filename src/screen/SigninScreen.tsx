@@ -1,26 +1,38 @@
-import React, { useLayoutEffect } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import React, { useLayoutEffect, useContext, useEffect } from "react";
+import { View, StyleSheet } from "react-native";
 import { LoginFlowStackParamList } from "../navigation";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import AuthForm from "../component/AuthForm";
 import NavLink from "../component/NavLink";
-
-// TODO: 1. navigation event 2. access context
+import { AuthContext } from "../context/AuthContext";
 
 interface SigninScreenProps
   extends NativeStackScreenProps<LoginFlowStackParamList, "Signin"> {}
 
 const SigninScreen: React.FC<SigninScreenProps> = ({ navigation }) => {
+  const { state, signin, clearErrorMessage } = useContext(AuthContext)!;
   useLayoutEffect(() => {
     navigation.setOptions({ headerShown: false });
+  }, [navigation]);
+
+  /* possible scenario:
+     - you are navigating from signup screen which already
+       has error message appeared on that screen; you 
+       don't want to show it here on this signin screen
+  */
+  useEffect(() => {
+    const unsubscribe = navigation.addListener("focus", () => {
+      clearErrorMessage();
+    });
+    return unsubscribe;
   }, [navigation]);
 
   return (
     <View style={styles.container}>
       <AuthForm
         headerText="Sign In to Your Account"
-        errorMessage=""
-        onSubmit={() => {}}
+        errorMessage={state.errorMessage}
+        onSubmit={signin}
         submitButtonText="Sign In"
       />
       <NavLink

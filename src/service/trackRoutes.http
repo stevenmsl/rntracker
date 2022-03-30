@@ -1,0 +1,27 @@
+### get tracks
+### use Post http://localhost:3000/signin in authRoutes.http
+### to generate a token
+Get http://rntrackserver.vercel.app/tracks
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjM5Mzc3MDY4OTFjOWU4MGRlZWU0ZTciLCJpYXQiOjE2NDgxNjE4NTd9.oQnZdOLHU9n9qPEE1UyNgA5ONVtv4IRaenFASwZZMCw
+
+
+### create a track
+Post http://rntrackserver.vercel.app/tracks
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjM5Mzc3MDY4OTFjOWU4MGRlZWU0ZTciLCJpYXQiOjE2NDgxNjE4NTd9.oQnZdOLHU9n9qPEE1UyNgA5ONVtv4IRaenFASwZZMCw
+
+{
+    "name":"track 3",
+    "locations": [{
+    "timestamp": 1000000,
+        "coords": {
+    "latitude": 100,
+    "longtitude": 100,
+    "altitude": 100,
+    "accuracy": 100,
+    "heading": 100,
+    "speed": 100
+        } 
+    }]
+}

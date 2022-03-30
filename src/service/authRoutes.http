@@ -1,0 +1,18 @@
+### create new user
+Post  http://rntrackserver.vercel.app/signup
+Content-Type: application/json
+
+{
+    "email":"arlo2@arlo.com",
+    "password": "arlotheper"
+}
+
+### login in user
+Post http://rntrackserver.vercel.app/signin
+Content-Type: application/json
+
+{
+    "email":"arlo@arlo.com",
+    "password": "arlotheper"
+}
+

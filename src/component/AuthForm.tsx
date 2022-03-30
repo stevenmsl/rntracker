@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { Text, Button, Input } from "react-native-elements";
+import { UserCredential } from "../service";
 import Spacer from "./Spacer";
 interface AuthFormProps {
   headerText: string;
   errorMessage: string;
-  onSubmit: (email: string, password: string) => void;
+  onSubmit: (cred: UserCredential) => void;
   submitButtonText: string;
 }
 const AuthForm: React.FC<AuthFormProps> = ({
@@ -44,7 +45,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
       <Spacer />
       <Button
         title={submitButtonText}
-        onPress={() => onSubmit(email, password)}
+        onPress={() => onSubmit({email, password})}
       />
     </>
   );

@@ -4,6 +4,7 @@ import { RootStackParamList } from "./src/navigation";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginFlowScreen from "./src/screen/LoginFlowScreen";
 import { navigationRef } from "./src/navigation";
+import { AuthProvider } from "./src/context/AuthContext";
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
@@ -21,5 +22,9 @@ const App = () => {
 };
 
 export default () => {
-  return <App />;
+  return (
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  );
 };
