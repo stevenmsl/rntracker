@@ -5,7 +5,7 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import AuthForm from "../component/AuthForm";
 import NavLink from "../component/NavLink";
 import { AuthContext } from "../context/AuthContext";
-
+//import { signin as signinSvc } from "../service";
 interface SigninScreenProps
   extends NativeStackScreenProps<LoginFlowStackParamList, "Signin"> {}
 
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    marginBottom: 250,
+    marginBottom: 100,
   },
 });
 

@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import AsyncStorge from "@react-native-async-storage/async-storage";
-const baseUrl = "http://rntrackserver.vercel.app";
+const baseUrl = "https://rntrackserver.vercel.app";
 //"http://localhost:3000";
 
 export type UserCredential = {

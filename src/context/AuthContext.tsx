@@ -40,12 +40,12 @@ const clearErrorMessage: (
 const signup: (dispatch: AuthDispatch) => AuthBoundMethods["signup"] =
   (dispatch) => async (cred) => {
     try {
-      const { token } = await signinSvc(cred);
+      const { token } = await signupSvc(cred);
       await AsyncStorage.setItem("token", token);
       dispatch({ type: "SIGN_IN", payload: { token } });
       navigationRef.navigate("MainFlow", { screen: "TrackListFlow" });
-    } catch (err) {
-      console.log("AuthContext signup error", err);
+    } catch (err: any) {
+      console.log("AuthContext signup error", err.message);
       dispatch({
         type: "ADD_AUTH_ERR",
         payload: {
@@ -58,12 +58,12 @@ const signup: (dispatch: AuthDispatch) => AuthBoundMethods["signup"] =
 const signin: (dispatch: AuthDispatch) => AuthBoundMethods["signin"] =
   (dispatch) => async (cred) => {
     try {
-      const { token } = await signupSvc(cred);
+      const { token } = await signinSvc(cred);
       await AsyncStorage.setItem("token", token);
       dispatch({ type: "SIGN_IN", payload: { token } });
       navigationRef.navigate("MainFlow", { screen: "TrackListFlow" });
     } catch (err) {
-      console.log("AuthContext signup error", err);
+      console.log("AuthContext signin error", err);
       dispatch({
         type: "ADD_AUTH_ERR",
         payload: {
