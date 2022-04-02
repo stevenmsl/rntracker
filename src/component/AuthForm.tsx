@@ -15,8 +15,8 @@ const AuthForm: React.FC<AuthFormProps> = ({
   onSubmit,
   submitButtonText,
 }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("arlo@arlo.com");
+  const [password, setPassword] = useState("arlotheper");
 
   return (
     <>
@@ -45,7 +45,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
       <Spacer />
       <Button
         title={submitButtonText}
-        onPress={() => onSubmit({email, password})}
+        onPress={() => onSubmit({ email, password })}
       />
     </>
   );

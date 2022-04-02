@@ -6,7 +6,11 @@ const Stack = createNativeStackNavigator<TrackListFlowStackParamList>();
 const TrackListFlowScreen = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="TrackList" component={TrackListScreen} />
+      <Stack.Screen
+        name="TrackList"
+        component={TrackListScreen}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };

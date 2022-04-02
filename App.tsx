@@ -17,7 +17,11 @@ const App = () => {
           component={LoginFlowScreen}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="MainFlow" component={MainFlowScreen} />
+        <Stack.Screen
+          name="MainFlow"
+          component={MainFlowScreen}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
